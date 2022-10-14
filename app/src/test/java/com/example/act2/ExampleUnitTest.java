@@ -1,4 +1,4 @@
-package com.example.act12;
+package com.example.act2;
 
 import org.junit.Test;
 
