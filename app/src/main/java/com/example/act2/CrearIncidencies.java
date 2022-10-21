@@ -1,4 +1,4 @@
-package com.example.act2CrearIncidencies;
+package com.example.act2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
