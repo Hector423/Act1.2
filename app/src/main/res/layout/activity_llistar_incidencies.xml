@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".LlistarIncidencies">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="160dp"
+        android:layout_height="324dp"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="53dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 public class LlistarIncidencies extends AppCompatActivity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
