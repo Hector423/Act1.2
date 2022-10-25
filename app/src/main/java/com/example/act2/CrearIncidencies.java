@@ -6,20 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
-
-import com.example.act2.R;
 
 public class CrearIncidencies extends AppCompatActivity {
 
     private TextView nom, cognom, dni, email, descripcio, identificador, telContacte;
     private Button cancelar, enviar;
+    private Spinner opcions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_crear_incidencies);
+        opcions = findViewById(R.id.spinner);
         nom = findViewById(R.id.nomInformador);
         cognom = findViewById(R.id.cognomInformador);
         dni = findViewById(R.id.dni);
@@ -33,14 +34,40 @@ public class CrearIncidencies extends AppCompatActivity {
         cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewActivity();
+                openTornarMain();
+            }
+        });
+        /*
+        Validar camps
+         */
+        try{
+            if(opcions.toString().isEmpty()){
+
+            }
+
+
+        } catch (Exception e){
+
+        }
+
+
+
+
+        enviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
             }
         });
     }
-    public void openNewActivity(){
+    public void openTornarMain(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+//    public void openEnviarDades(){
+//        Intent intent = new Intent(this, ContentProviderBotoCrear.class);
+//        startActivity(intent);
+//    }
 
 
 
