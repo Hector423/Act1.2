@@ -24,6 +24,9 @@ public class CrearIncidencies extends AppCompatActivity {
         identificador = findViewById(R.id.identificador);
         telContacte = findViewById(R.id.telContacte);
 
+
+
+
     }
 
 }
