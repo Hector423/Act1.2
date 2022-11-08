@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                openNewActivity(crearIncidencia);
+//                openNewActivity(crearIncidencia);
+                openCrearIncidencies();
             }
         });
 
@@ -35,11 +36,25 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                openNewActivity(llistarIncidencies);
+//                openNewActivity(llistarIncidencies);
+                openLlistarIncidencies();
             }
         });
     }
 
+    public void openCrearIncidencies()
+    {
+        Intent intent = new Intent(this, CrearIncidencies.class);
+        startActivity(intent);
+    }
+
+    public void openLlistarIncidencies()
+    {
+        Intent intent = new Intent(this, LlistarIncidencies.class);
+        startActivity(intent);
+    }
+
+    @Deprecated
     public void openNewActivity(Button buttonPressed)
     {
         Intent intent;
