@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ContentProviderBotoCrear  extends AppCompatActivity {
-    private static final String url = "jdbc:mysql://127.0.0.1:3306/M8_1.2";
+    private static final String url = "jdbc:mysql://192.168.5.131:3306/M8_1.2";
     private static final String user = "hvallve";
     private static final String pass = "He123";
     Button btnFetch, btnClear;
@@ -37,10 +38,7 @@ public class ContentProviderBotoCrear  extends AppCompatActivity {
 //                txtData.setText("");
 //            }
 //        });
-//
-//
 //    }
-
 
     private class ConnectMySql extends AsyncTask<String, Void, String> {
 
@@ -56,14 +54,18 @@ public class ContentProviderBotoCrear  extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                res = e.toString();
+                res = "Error: " + e.toString();
             }
-            return res;
-        }
 
+            return res;
+
+        }
         @Override
         protected void onPostExecute(String result) {
+
             txtData.setText(result);
         }
+
     }
+
 }

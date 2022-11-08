@@ -20,13 +20,13 @@ public class MainActivity extends AppCompatActivity {
         resoldreIncidencies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openNewActivity();
+                obrirConexio();
             }
         });
-    }
-    public void openNewActivity(){
+}
+
+    private void obrirConexio() {
         Intent intent = new Intent(this, ContentProviderBotoCrear.class);
         startActivity(intent);
     }
-
-}
+    }
