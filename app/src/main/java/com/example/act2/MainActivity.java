@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity
 //        Intent intent = new Intent(this, CrearIncidencies.class);
 //        startActivity(intent);
     }
-}
+
 
     private void obrirConexio() {
         Intent intent = new Intent(this, ContentProviderBotoCrear.class);
