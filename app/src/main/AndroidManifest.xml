@@ -26,6 +26,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".LlistarIncidencies" android:exported="false"/>
+        <activity android:name=".ContentProviderBotoCrear">
+
+        </activity>
+
+
     </application>
 
 </manifest>

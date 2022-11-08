@@ -80,3 +80,9 @@ public class MainActivity extends AppCompatActivity
 //        startActivity(intent);
     }
 }
+
+    private void obrirConexio() {
+        Intent intent = new Intent(this, ContentProviderBotoCrear.class);
+        startActivity(intent);
+    }
+    }
