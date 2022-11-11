@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-//                openNewActivity(crearIncidencia);
                 openCrearIncidencies();
             }
         });
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-//                openNewActivity(llistarIncidencies);
                 openLlistarIncidencies();
             }
         });
@@ -76,13 +74,12 @@ public class MainActivity extends AppCompatActivity
             intent = new Intent(this, CrearIncidencies.class);
             startActivity(intent);
         }
-//        Intent intent = new Intent(this, CrearIncidencies.class);
-//        startActivity(intent);
     }
 
-
-    private void obrirConexio() {
+    @SuppressWarnings("unused")
+    private void obrirConexio()
+    {
         Intent intent = new Intent(this, ContentProviderBotoCrear.class);
         startActivity(intent);
     }
-    }
+}
