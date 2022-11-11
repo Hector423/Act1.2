@@ -17,27 +17,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        crearIncidencia = (Button) findViewById(R.id.botoIncidencies);
+        crearIncidencia = (Button)findViewById(R.id.botoIncidencies);
         llistarIncidencies = findViewById(R.id.llistarIncidencia);
         resoldreIncidencies = findViewById(R.id.resoldreIncidencia);
 
-        crearIncidencia.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                openCrearIncidencies();
-            }
-        });
-
-        llistarIncidencies.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                openLlistarIncidencies();
-            }
-        });
+        crearIncidencia.setOnClickListener(v -> openCrearIncidencies());
+        llistarIncidencies.setOnClickListener(v -> openLlistarIncidencies());
+        resoldreIncidencies.setOnClickListener(v -> openResoldreIncidencies());
     }
 
     public void openCrearIncidencies()
@@ -52,34 +38,8 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    @Deprecated
-    public void openNewActivity(Button buttonPressed)
+    public void openResoldreIncidencies()
     {
-        Intent intent;
-
-        // RAONS PER EL CUAL C# ES INFINITAMENT MILLOR QUE JAVA;
-        // JAVA NO ACCEPTA UN SWITCH EN SUBSTITUCIÓ D'AQUESTS IFS
-        if(crearIncidencia.equals(buttonPressed))
-        {
-            intent = new Intent(this, CrearIncidencies.class);
-            startActivity(intent);
-        }
-        else if(llistarIncidencies.equals(buttonPressed))
-        {
-            intent = new Intent(this, LlistarIncidencies.class);
-            startActivity(intent);
-        }
-        else if(resoldreIncidencies.equals(buttonPressed))
-        {
-            intent = new Intent(this, CrearIncidencies.class);
-            startActivity(intent);
-        }
-    }
-
-    @SuppressWarnings("unused")
-    private void obrirConexio()
-    {
-        Intent intent = new Intent(this, ContentProviderBotoCrear.class);
-        startActivity(intent);
+        // Posar aqui el codi per obrir l'activitat del tercer botó
     }
 }
