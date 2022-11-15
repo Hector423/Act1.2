@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
             {
 //                openNewActivity(llistarIncidencies);
                 openLlistarIncidencies();
+                obrirConexio();
             }
         });
     }
@@ -53,33 +54,6 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, LlistarIncidencies.class);
         startActivity(intent);
     }
-
-    @Deprecated
-    public void openNewActivity(Button buttonPressed)
-    {
-        Intent intent;
-
-        // RAONS PER EL CUAL C# ES INFINITAMENT MILLOR QUE JAVA;
-        // JAVA NO ACCEPTA UN SWITCH EN SUBSTITUCIÓ D'AQUESTS IFS
-        if(crearIncidencia.equals(buttonPressed))
-        {
-            intent = new Intent(this, CrearIncidencies.class);
-            startActivity(intent);
-        }
-        else if(llistarIncidencies.equals(buttonPressed))
-        {
-            intent = new Intent(this, LlistarIncidencies.class);
-            startActivity(intent);
-        }
-        else if(resoldreIncidencies.equals(buttonPressed))
-        {
-            intent = new Intent(this, CrearIncidencies.class);
-            startActivity(intent);
-        }
-//        Intent intent = new Intent(this, CrearIncidencies.class);
-//        startActivity(intent);
-    }
-
 
     private void obrirConexio() {
         Intent intent = new Intent(this, ContentProviderBotoCrear.class);

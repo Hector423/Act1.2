@@ -13,7 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ContentProviderBotoCrear  extends AppCompatActivity {
-    private static final String url = "jdbc:mysql://192.168.5.131:3306/M8_1.2";
+    private static final String url = "jdbc:mysql://192.168.5.189:3306/M8_1.2";
     private static final String user = "hvallve";
     private static final String pass = "He123";
     Button btnFetch, btnClear;
@@ -51,11 +51,12 @@ public class ContentProviderBotoCrear  extends AppCompatActivity {
                 Connection con = DriverManager.getConnection(url, user, pass);
                 String result = "Accés correcte a la BD";
                 res = result;
-
+                return res;
             } catch (Exception e) {
                 e.printStackTrace();
                 res = "Error: " + e.toString();
             }
+
 
             return res;
 
