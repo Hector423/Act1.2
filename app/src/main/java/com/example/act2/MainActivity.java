@@ -17,10 +17,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        crearIncidencia = (Button) findViewById(R.id.botoIncidencies);
+        crearIncidencia = (Button)findViewById(R.id.botoIncidencies);
         llistarIncidencies = findViewById(R.id.llistarIncidencia);
         resoldreIncidencies = findViewById(R.id.resoldreIncidencia);
 
+<<<<<<< HEAD
         crearIncidencia.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -41,6 +42,11 @@ public class MainActivity extends AppCompatActivity
                 obrirConexio();
             }
         });
+=======
+        crearIncidencia.setOnClickListener(v -> openCrearIncidencies());
+        llistarIncidencies.setOnClickListener(v -> openLlistarIncidencies());
+        resoldreIncidencies.setOnClickListener(v -> openResoldreIncidencies());
+>>>>>>> 2e8b195b07be6f5d232fa24c37869d3e01d725c7
     }
 
     public void openCrearIncidencies()
@@ -55,8 +61,16 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+<<<<<<< HEAD
     private void obrirConexio() {
         Intent intent = new Intent(this, ContentProviderBotoCrear.class);
         startActivity(intent);
     }
     }
+=======
+    public void openResoldreIncidencies()
+    {
+        // Posar aqui el codi per obrir l'activitat del tercer botó
+    }
+}
+>>>>>>> 2e8b195b07be6f5d232fa24c37869d3e01d725c7
