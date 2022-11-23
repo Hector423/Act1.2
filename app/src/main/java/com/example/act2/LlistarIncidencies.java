@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
 import android.database.*;
-import android.database.sqlite;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.*;
 import android.os.Bundle;
@@ -46,7 +45,7 @@ public class LlistarIncidencies extends AppCompatActivity
 
         if(cursor.moveToFirst())
         {
-            
+
         }
         return null;
     }
