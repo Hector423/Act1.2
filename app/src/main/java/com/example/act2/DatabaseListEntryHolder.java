@@ -14,7 +14,7 @@ public class DatabaseListEntryHolder extends RecyclerView.ViewHolder
     public DatabaseListEntryHolder(View itemView)
     {
         super(itemView);
-        card_view = (CardView) itemView.findViewById(R.id.card_view);
-        text = (TextView)itemView.findViewById(R.id.tv1);
+//        card_view = (CardView) itemView.findViewById(R.id.card_view);
+//        text = (TextView)itemView.findViewById(R.id.tv1);
     }
 }

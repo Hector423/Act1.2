@@ -18,6 +18,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
+        style="@android:style/Widget.Material.Light.ListView"
         android:layout_width="409dp"
         android:layout_height="555dp"
         app:layout_constraintEnd_toEndOf="parent"
