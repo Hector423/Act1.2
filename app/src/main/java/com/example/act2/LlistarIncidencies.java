@@ -1,6 +1,9 @@
 package com.example.act2;
 
+import android.app.Notification;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +15,11 @@ public class LlistarIncidencies extends AppCompatActivity
 {
     public ArrayList<DatabaseListEntry> databaseListEntries; // <- es necessari?
 
+    private NotificationManager notificationManager;
+
     RecyclerView recyclerView;
+
+    Button notificacionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,6 +28,41 @@ public class LlistarIncidencies extends AppCompatActivity
         setContentView(R.layout.activity_llistar_incidencies);
 
         recyclerView = findViewById(R.id.recycler);
+        notificacionButton = findViewById(R.id.leButton);
+
+        /*
+        Notification.Builder notificationBuilder = null;
+        switch (id) {
+            case notification_one:
+                notificationBuilder = notificationHelper.getNotification1(title,
+                        getString(R.string.channel_one_body));
+                break;
+
+            case notification_two:
+                notificationBuilder = notificationHelper.getNotification2(title,
+                        getString(R.string.channel_two_body));
+                break;
+        }
+
+        if (notificationBuilder != null) {
+            notificationHelper.notify(id, notificationBuilder);
+        }
+        *  */
+
+//        notificacionButton.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                Notification.Builder notificationBuilder = null;
+//
+//                notificationBuilder = notificationManager.getNotificationNothing("No tens cap incidencia restant","Tens 0 incidencies per resoldre. Bona feina!");
+//
+//                notificationManager.notify(101, notificationBuilder);
+//            }
+//        });
+
+
 
         // aqui es on s'hauría d'omplir el databaseListEntries amb lo de la BD
         databaseListEntries = (ArrayList<DatabaseListEntry>)getAllEntries();
@@ -44,5 +86,14 @@ public class LlistarIncidencies extends AppCompatActivity
 
 //        }
         return null;
+    }
+
+    public void buttonOnClick(View view)
+    {
+        Notification.Builder notificationBuilder = null;
+
+                notificationBuilder = notificationManager.getNotificationNothing("No tens cap incidencia restant","Tens 0 incidencies per resoldre. Bona feina!");
+
+                notificationManager.notify(101, notificationBuilder);
     }
 }
