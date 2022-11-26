@@ -23,10 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
-        android:layout_marginBottom="255dp"
+        android:layout_marginBottom="254dp"
         android:text="Crear incidencia"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llistatBBDD" />
 
     <Button
         android:id="@+id/llistarIncidencia"
@@ -47,5 +48,17 @@
         android:text="Resoldre incidencia"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llistarIncidencia" />
+
+    <TextView
+        android:id="@+id/llistatBBDD"
+        android:layout_width="223dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginBottom="134dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/botoIncidencies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
