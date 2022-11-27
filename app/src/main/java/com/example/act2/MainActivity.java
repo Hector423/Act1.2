@@ -17,28 +17,65 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+{
     private Button crearIncidencia, llistarIncidencies, resoldreIncidencies;
     private TextView llistar;
     String nom = "nom3", cognom= "cognom", dni= "nom2", email= "nom3",  identificador= "nom4",  Descripcio= "nom5";
     int telContacte = 3123;
 
 
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        setContentView(R.layout.activity_main);
+        crearIncidencia = (Button)findViewById(R.id.botoIncidencies);
+        llistarIncidencies = findViewById(R.id.llistarIncidencia);
         resoldreIncidencies = findViewById(R.id.resoldreIncidencia);
         llistar = findViewById(R.id.llistatBBDD);
 
-        resoldreIncidencies.setOnClickListener(new View.OnClickListener() {
+
+        crearIncidencia.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v)
+            {
+//                openNewActivity(crearIncidencia);
+                openCrearIncidencies();
+            }
+        });
+
+        llistarIncidencies.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+//                openNewActivity(llistarIncidencies);
+                openLlistarIncidencies();
                 obrirConexio();
             }
         });
-}
+
+        crearIncidencia.setOnClickListener(v -> openCrearIncidencies());
+        llistarIncidencies.setOnClickListener(v -> openLlistarIncidencies());
+        resoldreIncidencies.setOnClickListener(v -> openResoldreIncidencies());
+
+    }
+
+    public void openCrearIncidencies()
+    {
+        Intent intent = new Intent(this, CrearIncidencies.class);
+        startActivity(intent);
+    }
+
+    public void openLlistarIncidencies()
+    {
+        Intent intent = new Intent(this, LlistarIncidencies.class);
+        startActivity(intent);
+    }
+
 
     private void obrirConexio() {
         GestorBBDD gestorBBDD = new GestorBBDD(this);
@@ -76,4 +113,12 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
     }
+    public void openResoldreIncidencies()
+    {
+        // Posar aqui el codi per obrir l'activitat del tercer botó
     }
+    }
+
+
+
+
