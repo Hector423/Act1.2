@@ -1,7 +1,5 @@
 package com.example.act2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,18 +8,25 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 public class CrearIncidencies extends AppCompatActivity {
 
     private TextView nom, cognom, dni, email, descripcio, identificador, telContacte;
     private Button cancelar, enviar;
-    private Spinner spinner;
+
+    String nomV = "", cognomV= "", dniV= "", emailV= "",  identificadorV= "",  descripcioV= "";
+    String telContacteV = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_crear_incidencies);
-        spinner = findViewById(R.id.spinner);
         nom = findViewById(R.id.nomInformador);
         cognom = findViewById(R.id.cognomInformador);
         dni = findViewById(R.id.dni);
@@ -38,32 +43,10 @@ public class CrearIncidencies extends AppCompatActivity {
                 openTornarMain();
             }
         });
-        /*
-        Validar camps
-         */
-
-
-        String[] opcions = {"a", "b", "c", "d", "e"};
-
-        ArrayAdapter<String> opcionsAdaptades = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, opcions);
-
-        spinner.setAdapter(opcionsAdaptades);
-
-
-
-
-        try{
-            if(opcions.toString().isEmpty()){
-
-            }
-
-
-        } catch (Exception e){
-
-        }
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                    insertarDades();
             }
         });
     }
@@ -76,7 +59,21 @@ public class CrearIncidencies extends AppCompatActivity {
 //        Intent intent = new Intent(this, ContentProviderBotoCrear.class);
 //        startActivity(intent);
 //    }
+private void insertarDades() {
 
+        nomV = nom.getText().toString();
+        cognomV = cognom.getText().toString();
+        dniV = dni.getText().toString();
+        telContacteV = telContacte.getText().toString();
+        emailV = email.getText().toString();
+        identificadorV = identificador.getText().toString();
+        descripcioV = descripcio.getText().toString();
+
+        GestorBBDD gestorBBDD = new GestorBBDD(this);
+        gestorBBDD.guardarRegistre( nomV, cognomV,  dniV,  telContacteV, emailV,  identificadorV,  descripcioV);
+
+
+    }
 
 
     }
