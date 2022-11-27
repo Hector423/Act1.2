@@ -58,9 +58,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        crearIncidencia.setOnClickListener(v -> openCrearIncidencies());
-        llistarIncidencies.setOnClickListener(v -> openLlistarIncidencies());
-        resoldreIncidencies.setOnClickListener(v -> openResoldreIncidencies());
+//        crearIncidencia.setOnClickListener(v -> openCrearIncidencies());
+//        llistarIncidencies.setOnClickListener(v -> openLlistarIncidencies());
+//        resoldreIncidencies.setOnClickListener(v -> openResoldreIncidencies());
 
     }
 
