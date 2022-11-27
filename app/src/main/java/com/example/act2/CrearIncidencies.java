@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,8 +70,12 @@ private void insertarDades() {
         identificadorV = identificador.getText().toString();
         descripcioV = descripcio.getText().toString();
 
-        GestorBBDD gestorBBDD = new GestorBBDD(this);
-        gestorBBDD.guardarRegistre( nomV, cognomV,  dniV,  telContacteV, emailV,  identificadorV,  descripcioV);
+        if(!nomV.isEmpty() && !cognomV.isEmpty() && !dniV.isEmpty() && !telContacteV.isEmpty() && !emailV.isEmpty() && !identificadorV.isEmpty() && !descripcioV.isEmpty()){
+            GestorBBDD gestorBBDD = new GestorBBDD(this);
+            gestorBBDD.guardarRegistre( nomV, cognomV,  dniV,  telContacteV, emailV,  identificadorV,  descripcioV);
+        }
+    Toast.makeText(this, "Sisplau omple tots els camps", Toast.LENGTH_LONG).show();
+
 
 
     }
