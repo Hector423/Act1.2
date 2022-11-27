@@ -73,7 +73,7 @@ public class GestorBBDD  extends SQLiteOpenHelper {
 
     public Cursor llegir(){
         SQLiteDatabase gestorBBDD = this.getReadableDatabase();
-        Cursor cursor = gestorBBDD.rawQuery("SELECT id, nom, cognom FROM registros", null);
+        Cursor cursor = gestorBBDD.rawQuery("SELECT * FROM registros", null);
 return cursor;
     }
 
