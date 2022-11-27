@@ -1,9 +1,6 @@
 package com.example.act2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,12 +9,12 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CrearIncidencies extends AppCompatActivity {
 
@@ -60,11 +57,11 @@ public class CrearIncidencies extends AppCompatActivity {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    insertarDades("jdbc:mysql://192.168.5.189:3306/M8_1.2");
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    insertarDades("jdbc:mysql://192.168.5.189:3306/M8_1.2");
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
             }
         });
     }
