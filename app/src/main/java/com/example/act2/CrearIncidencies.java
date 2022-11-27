@@ -3,12 +3,21 @@ package com.example.act2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CrearIncidencies extends AppCompatActivity {
 
@@ -48,22 +57,14 @@ public class CrearIncidencies extends AppCompatActivity {
         ArrayAdapter<String> opcionsAdaptades = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, opcions);
 
         spinner.setAdapter(opcionsAdaptades);
-
-
-
-
-        try{
-            if(opcions.toString().isEmpty()){
-
-            }
-
-
-        } catch (Exception e){
-
-        }
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    insertarDades("jdbc:mysql://192.168.5.189:3306/M8_1.2");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -76,7 +77,22 @@ public class CrearIncidencies extends AppCompatActivity {
 //        Intent intent = new Intent(this, ContentProviderBotoCrear.class);
 //        startActivity(intent);
 //    }
+private void insertarDades(String URL) throws SQLException {
 
+        try {
+            Connection conn = DriverManager.getConnection(URL);
+            Statement st = conn.createStatement();
+
+
+            st.executeUpdate("INSERT INTO 'registres' (id, tipusIncidencia, nomInformador, cognomsInformador, dni, telContacte, email, identificador, descripcio)" +
+                    " VALUES ('1', '2', '" + nom +"','" + cognom + "','" + dni + "','" + telContacte + "','" + email + "','" + identificador + "','" + descripcio + "',");
+        }catch (SQLException s){
+            Log.d("No ha sido posible insertar una nueva cita", s.getMessage());
+        }
+        
+
+
+    }
 
 
     }
