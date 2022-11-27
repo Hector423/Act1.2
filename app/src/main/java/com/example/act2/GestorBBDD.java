@@ -24,10 +24,10 @@ public class GestorBBDD  extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE registros ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "nom varchar(10),"
+                + "nom TEXT,"
                 + "cognom TEXT,"
                 + "dni TEXT,"
-                + "telContacte INTEGER,"
+                + "telContacte TEXT,"
                 + "email TEXT,"
                 + "identificador TEXT,"
                 + "descripcio TEXT)");
@@ -44,30 +44,21 @@ public class GestorBBDD  extends SQLiteOpenHelper {
      *
      * @author Laura Lopez
      */
-    public void guardarRegistre(String nom, String cognom, String dni, int telContacte,
+    public void guardarRegistre(String nom, String cognom, String dni, String telContacte,
                                  String email, String identificador, String Descripcio) {
         SQLiteDatabase db = this.getWritableDatabase();
         guardarRegistres(db, nom, cognom, dni, telContacte, email, identificador, Descripcio);
     }
 
     /**
-     * Metodo para introducir el plato en la BD
+     * Metodo para introducir el plato en la BDS
      *
      * @author Laura Lopez
      */
-    private void guardarRegistres(SQLiteDatabase db, String nom, String cognom, String dni, int telContacte,
+    private void guardarRegistres(SQLiteDatabase db, String nom, String cognom, String dni, String telContacte,
                                   String email, String identificador, String Descripcio) {
         db.execSQL("insert into registros (nom, cognom, dni, telContacte, email, identificador, descripcio) " +
                     "values ('"+nom+"','"+cognom+"','"+dni+"','"+telContacte+"','"+email+"','"+identificador+"','"+Descripcio+"')");
-//        ContentValues cv = new ContentValues();
-//        cv.put("nom", nom);
-//        cv.put("cognom", cognom);
-//        cv.put("dni", dni);
-//        cv.put("telContacte", telContacte);
-//        cv.put("email", email);
-//        cv.put("identificador", identificador);
-//        cv.put("descripcio", Descripcio);
-//        db.insert("registros", null, cv);
         db.close();
     }
 
@@ -91,7 +82,7 @@ return cursor;
                                                 cursor.getString(1),
                                                 cursor.getString(2),
                                                 cursor.getString(3),
-                                                cursor.getInt(4),
+                                                cursor.getString(4),
                                                 cursor.getString(5),
                                                 cursor.getString(6),
                                                 cursor.getString(7)));

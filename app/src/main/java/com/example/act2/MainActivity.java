@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-//                openNewActivity(crearIncidencia);
                 openCrearIncidencies();
             }
         });
@@ -52,15 +51,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-//                openNewActivity(llistarIncidencies);
-                openLlistarIncidencies();
                 obrirConexio();
             }
         });
-
-//        crearIncidencia.setOnClickListener(v -> openCrearIncidencies());
-//        llistarIncidencies.setOnClickListener(v -> openLlistarIncidencies());
-//        resoldreIncidencies.setOnClickListener(v -> openResoldreIncidencies());
 
     }
 
@@ -79,38 +72,20 @@ public class MainActivity extends AppCompatActivity
 
     private void obrirConexio() {
         GestorBBDD gestorBBDD = new GestorBBDD(this);
-        gestorBBDD.guardarRegistre( nom, cognom,  dni,  telContacte, email,  identificador,  Descripcio);
-        ArrayList<Registro> arrayList = new ArrayList<>();
-        Registro registro = new Registro();
+        ArrayList<Registro> arrayList;
         arrayList = gestorBBDD.llegirRegistres();
-
-
 
         llistar.setText("");
 
-            llistar.append("Prova: " + arrayList.get(0).getId() + "\n");
-            llistar.append("Prova: " + arrayList.get(1).getNom() + "\n");
-        llistar.append("Prova: " + arrayList.get(2).getCognom() + "\n");
+        llistar.append("Prova: " + arrayList.get(0).getId() + "\n");
+        llistar.append("Prova: " + arrayList.get(0).getNom() + "\n");
+        llistar.append("Prova: " + arrayList.get(0).getCognom() + "\n");
+        llistar.append("Prova: " + arrayList.get(0).getDni() + "\n");
+        llistar.append("Prova: " + arrayList.get(0).getTelContacte() + "\n");
+        llistar.append("Prova: " + arrayList.get(0).getEmail() + "\n");
+        llistar.append("Prova: " + arrayList.get(0).getIdentificador() + "\n");
+        llistar.append("Prova: " + arrayList.get(0).getDescripcio() + "\n");
 
-
-
-//        SQLiteDatabase db = gestorBBDD.getReadableDatabase();
-//        HashMap<String, String> resultat = new HashMap<String,String>();
-//        try{
-//            Cursor cursor = db.rawQuery("select cognom from registros", null);
-//            cursor.moveToFirst();
-//
-//            llistar.setText(resultat.get("nom"));
-////            String nom_ = cursor.getString(0);
-////            cursor.moveToPosition(2);
-////            String cognom_ = cursor.getString(2);
-////            String dni_ = cursor.getString(0);
-////            llistar.setText(cursor.getString(2));
-////            llistar.setText(cognom_);
-//            cursor.close();
-//        }catch (Exception e){
-//            Toast.makeText(this, "Error" + e.getMessage(), Toast.LENGTH_LONG).show();
-//        }
 
     }
     public void openResoldreIncidencies()
