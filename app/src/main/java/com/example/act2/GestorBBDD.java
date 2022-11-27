@@ -18,8 +18,6 @@ public class GestorBBDD  extends SQLiteOpenHelper {
         super(context, "registres", null, 1);
     }
 
-
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE registros ("

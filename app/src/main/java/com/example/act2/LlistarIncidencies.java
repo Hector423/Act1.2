@@ -15,7 +15,7 @@ public class LlistarIncidencies extends AppCompatActivity
 {
     public ArrayList<DatabaseListEntry> databaseListEntries; // <- es necessari?
 
-    public NotificationManager notificationManager;
+    NotificationManager notificationManager;
 
     RecyclerView recyclerView;
 
