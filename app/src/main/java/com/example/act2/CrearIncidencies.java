@@ -2,7 +2,6 @@ package com.example.act2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,19 +14,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 public class CrearIncidencies extends AppCompatActivity {
 
     private TextView nom, cognom, dni, email, descripcio, identificador, telContacte;
     private Button cancelar, enviar;
-    private Spinner spinner;
+
+    String nomV = "", cognomV= "", dniV= "", emailV= "",  identificadorV= "",  descripcioV= "";
+    String telContacteV = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_crear_incidencies);
-        spinner = findViewById(R.id.spinner);
         nom = findViewById(R.id.nomInformador);
         cognom = findViewById(R.id.cognomInformador);
         dni = findViewById(R.id.dni);
@@ -44,24 +43,10 @@ public class CrearIncidencies extends AppCompatActivity {
                 openTornarMain();
             }
         });
-        /*
-        Validar camps
-         */
-
-
-        String[] opcions = {"a", "b", "c", "d", "e"};
-
-        ArrayAdapter<String> opcionsAdaptades = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, opcions);
-
-        spinner.setAdapter(opcionsAdaptades);
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                try {
-//                    insertarDades("jdbc:mysql://192.168.5.189:3306/M8_1.2");
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
+                    insertarDades();
             }
         });
     }
@@ -74,19 +59,18 @@ public class CrearIncidencies extends AppCompatActivity {
 //        Intent intent = new Intent(this, ContentProviderBotoCrear.class);
 //        startActivity(intent);
 //    }
-private void insertarDades(String URL) throws SQLException {
+private void insertarDades() {
 
-        try {
-            Connection conn = DriverManager.getConnection(URL);
-            Statement st = conn.createStatement();
+        nomV = nom.getText().toString();
+        cognomV = cognom.getText().toString();
+        dniV = dni.getText().toString();
+        telContacteV = telContacte.getText().toString();
+        emailV = email.getText().toString();
+        identificadorV = identificador.getText().toString();
+        descripcioV = descripcio.getText().toString();
 
-
-            st.executeUpdate("INSERT INTO 'registres' (id, tipusIncidencia, nomInformador, cognomsInformador, dni, telContacte, email, identificador, descripcio)" +
-                    " VALUES ('1', '2', '" + nom +"','" + cognom + "','" + dni + "','" + telContacte + "','" + email + "','" + identificador + "','" + descripcio + "',");
-        }catch (SQLException s){
-            Log.d("No ha sido posible insertar una nueva cita", s.getMessage());
-        }
-        
+        GestorBBDD gestorBBDD = new GestorBBDD(this);
+        gestorBBDD.guardarRegistre( nomV, cognomV,  dniV,  telContacteV, emailV,  identificadorV,  descripcioV);
 
 
     }
