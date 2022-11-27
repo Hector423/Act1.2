@@ -19,13 +19,25 @@
 <!--        android:clickable="true"-->
 <!--        android:onClick="buttonOnClick"-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        style="@android:style/Widget.Material.Light.ListView"
-        android:layout_width="409dp"
-        android:layout_height="555dp"
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recycler"-->
+<!--        style="@android:style/Widget.Material.Light.ListView"-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="555dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteY="175dp" />-->
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="287dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="122dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="175dp" />
+        tools:layout_editor_absoluteY="228dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

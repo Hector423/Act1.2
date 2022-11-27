@@ -4,16 +4,22 @@ import android.app.Notification;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LlistarIncidencies extends AppCompatActivity
 {
-    public ArrayList<DatabaseListEntry> databaseListEntries; // <- es necessari?
+    public ArrayList<Registro> databaseListEntries; // <- es necessari?
+
+    GestorBBDD gestorBBDD;
 
     public NotificationManager notificationManager;
 
@@ -27,7 +33,8 @@ public class LlistarIncidencies extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llistar_incidencies);
 
-        recyclerView = findViewById(R.id.recycler);
+        //recyclerView = findViewById(R.id.recycler);
+
         notificacionButton = (Button)findViewById(R.id.leButton);
 
         notificacionButton.setOnClickListener(new View.OnClickListener() {
@@ -73,11 +80,24 @@ public class LlistarIncidencies extends AppCompatActivity
 
 
 
+
         // aqui es on s'hauría d'omplir el databaseListEntries amb lo de la BD
-        databaseListEntries = (ArrayList<DatabaseListEntry>)getAllEntries();
+
+        //databaseListEntries = (ArrayList<DatabaseListEntry>)getAllEntries();
+
+        gestorBBDD = new GestorBBDD(this);
+        databaseListEntries = gestorBBDD.llegirRegistres();
 
         // mostrar el contingut de databaseListEntries dins de recyclerView
 //        recyclerView
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        String[] from = {"listview_image", "listview_title", "listview_discription"};
+        int[] to = {R.id.listview_image, R.id.listview_item_title, R.id.listview_item_short_description};
+
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), (List<? extends Map<String,?>>)databaseListEntries, R.layout.listview_activity, from, to);
+        ListView listView = (ListView)findViewById(R.id.list);
+        listView.setAdapter(simpleAdapter);
     }
 
     private void hola() {
@@ -99,7 +119,7 @@ public class LlistarIncidencies extends AppCompatActivity
     public List<DatabaseListEntry> getAllEntries()
     {
 //        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        databaseListEntries = new ArrayList<DatabaseListEntry>();
+        databaseListEntries = new ArrayList<Registro>();
         String selectQuery = "SELECT * FROM llista"; //TODO canviar el nom de la taula
 //        Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
 

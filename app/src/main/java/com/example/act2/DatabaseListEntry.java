@@ -2,32 +2,32 @@ package com.example.act2;
 
 public class DatabaseListEntry
 {
-    public String tipusIncidencia;
-    public String informadorNom;
-    public String informadorCognom;
-    public String DNI;
-    public int telfContacte;
+    public int id;
+    public String nom;
+    public String cognom;
+    public String dni;
+    public int telef;
     public String email;
-    public String id;
+    public String identificador;
     public String descripcio;
 
-    public DatabaseListEntry(String tipusIncidencia, String informadorNom, String informadorCognom,
-                             String DNI, int telfContacte, String email, String id, String descripcio)
+    public DatabaseListEntry(int id, String nom, String cognom, String dni, int telef, String email, String identificador, String descripcio)
     {
-        this.tipusIncidencia = tipusIncidencia;
-        this.informadorNom = informadorNom;
-        this.informadorCognom = informadorCognom;
-        this.DNI = DNI;
-        this.telfContacte = telfContacte;
-        this.email = email;
         this.id = id;
+        this.nom = nom;
+        this.cognom = cognom;
+        this.dni = dni;
+        this.telef = telef;
+        this.email = email;
+        this.identificador = identificador;
         this.descripcio = descripcio;
     }
 
-    public DatabaseListEntry(String informadorNom, String id, String descripcio)
+    public DatabaseListEntry(int id, String nom, String identificador, String descripcio)
     {
-        this.informadorNom = informadorNom;
         this.id = id;
+        this.nom = nom;
+        this.identificador = identificador;
         this.descripcio = descripcio;
     }
 }
