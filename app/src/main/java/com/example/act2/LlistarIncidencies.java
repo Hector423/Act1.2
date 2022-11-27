@@ -15,7 +15,7 @@ public class LlistarIncidencies extends AppCompatActivity
 {
     public ArrayList<DatabaseListEntry> databaseListEntries; // <- es necessari?
 
-    private NotificationManager notificationManager;
+    public NotificationManager notificationManager;
 
     RecyclerView recyclerView;
 
@@ -28,7 +28,16 @@ public class LlistarIncidencies extends AppCompatActivity
         setContentView(R.layout.activity_llistar_incidencies);
 
         recyclerView = findViewById(R.id.recycler);
-        notificacionButton = findViewById(R.id.leButton);
+        notificacionButton = (Button)findViewById(R.id.leButton);
+
+        notificacionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                result.setText("Hello "+name.getText());
+                hola();
+            }
+        });
 
         /*
         Notification.Builder notificationBuilder = null;
@@ -71,6 +80,19 @@ public class LlistarIncidencies extends AppCompatActivity
 //        recyclerView
     }
 
+    private void hola() {
+
+//        Notification.Builder notificationBuilder = null;
+
+//        postNotification(notification_one, getChannelOneText());
+
+        Notification.Builder notificationBuilder;
+
+        notificationBuilder = notificationManager.getNotificationNothing("No tens cap incidencia restant","Tens 0 incidencies per resoldre. Bona feina!");
+
+        notificationManager.notify(101, notificationBuilder);
+    }
+
     // things lol:
     // -> https://stackoverflow.com/questions/39248772/how-to-add-content-in-recyclerview-dynamically#39249026
     @SuppressWarnings("Convert2Diamond")
@@ -90,10 +112,6 @@ public class LlistarIncidencies extends AppCompatActivity
 
     public void buttonOnClick(View view)
     {
-        Notification.Builder notificationBuilder = null;
 
-                notificationBuilder = notificationManager.getNotificationNothing("No tens cap incidencia restant","Tens 0 incidencies per resoldre. Bona feina!");
-
-                notificationManager.notify(101, notificationBuilder);
     }
 }

@@ -15,9 +15,9 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText,MissingConstraints"
         tools:layout_editor_absoluteY="126dp"
-        android:clickable="true"
-        android:onClick="buttonOnClick"
         />
+<!--        android:clickable="true"-->
+<!--        android:onClick="buttonOnClick"-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
