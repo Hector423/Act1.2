@@ -24,7 +24,7 @@ public class GestorBBDD  extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE registros ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "nom TEXT,"
+                + "nom varchar(10),"
                 + "cognom TEXT,"
                 + "dni TEXT,"
                 + "telContacte INTEGER,"
@@ -46,7 +46,7 @@ public class GestorBBDD  extends SQLiteOpenHelper {
      */
     public void guardarRegistre(String nom, String cognom, String dni, int telContacte,
                                  String email, String identificador, String Descripcio) {
-        SQLiteDatabase db = getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         guardarRegistres(db, nom, cognom, dni, telContacte, email, identificador, Descripcio);
     }
 
@@ -57,14 +57,49 @@ public class GestorBBDD  extends SQLiteOpenHelper {
      */
     private void guardarRegistres(SQLiteDatabase db, String nom, String cognom, String dni, int telContacte,
                                   String email, String identificador, String Descripcio) {
-        ContentValues cv = new ContentValues();
-        cv.put("nom", "nom");
-        cv.put("cognom", cognom);
-        cv.put("dni", dni);
-        cv.put("telContacte", telContacte);
-        cv.put("email", email);
-        cv.put("identificador", identificador);
-        cv.put("Descripcio", Descripcio);
-        db.insert("registros", null, cv);
+        db.execSQL("insert into registros (nom, cognom, dni, telContacte, email, identificador, descripcio) " +
+                    "values ('"+nom+"','"+cognom+"','"+dni+"','"+telContacte+"','"+email+"','"+identificador+"','"+Descripcio+"')");
+//        ContentValues cv = new ContentValues();
+//        cv.put("nom", nom);
+//        cv.put("cognom", cognom);
+//        cv.put("dni", dni);
+//        cv.put("telContacte", telContacte);
+//        cv.put("email", email);
+//        cv.put("identificador", identificador);
+//        cv.put("descripcio", Descripcio);
+//        db.insert("registros", null, cv);
+        db.close();
     }
+
+    public Cursor llegir(){
+        SQLiteDatabase gestorBBDD = this.getReadableDatabase();
+        Cursor cursor = gestorBBDD.rawQuery("SELECT id, nom, cognom FROM registros", null);
+return cursor;
+    }
+
+    public ArrayList<Registro> llegirRegistres(){
+
+        SQLiteDatabase gestorBBDD = this.getReadableDatabase();
+
+        Cursor cursor = gestorBBDD.rawQuery("SELECT * FROM registros", null);
+
+        ArrayList<Registro> arrayRegistro = new ArrayList<>();
+
+        if (cursor.moveToFirst()){
+            do {
+                arrayRegistro.add(new Registro(cursor.getInt(0),
+                                                cursor.getString(1),
+                                                cursor.getString(2),
+                                                cursor.getString(3),
+                                                cursor.getInt(4),
+                                                cursor.getString(5),
+                                                cursor.getString(6),
+                                                cursor.getString(7)));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return arrayRegistro;
+
+    }
+
 }
