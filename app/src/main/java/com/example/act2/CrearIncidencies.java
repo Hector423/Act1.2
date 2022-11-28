@@ -74,8 +74,9 @@ private void insertarDades() {
         if(!nomV.isEmpty() && !cognomV.isEmpty() && !dniV.isEmpty() && !emailV.isEmpty() && !identificadorV.isEmpty() && !descripcioV.isEmpty()){
             GestorBBDD gestorBBDD = new GestorBBDD(this);
             gestorBBDD.guardarRegistre( nomV, cognomV,  dniV,  telContacteV, emailV,  identificadorV,  descripcioV);
+        }else{
+            Toast.makeText(this, "Sisplau omple tots els camps", Toast.LENGTH_LONG).show();
         }
-    Toast.makeText(this, "Sisplau omple tots els camps", Toast.LENGTH_LONG).show();
 
 
 
