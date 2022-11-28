@@ -2,10 +2,10 @@ package com.example.act2;
 
 public class Registro {
     String nom, cognom, dni, descripcio, identificador, email;
-    String telContacte;
+    int telContacte;
     int id;
 
-    public Registro (int id, String nom_, String cognom_, String dni_, String telContacte_,String email_, String identificador_, String descripcio_){
+    public Registro (int id, String nom_, String cognom_, String dni_, int telContacte_,String email_, String identificador_, String descripcio_){
         nom = nom_;
         cognom = cognom_;
         dni = dni_;
@@ -47,7 +47,7 @@ public class Registro {
         return email;
     }
 
-    public String getTelContacte() {
+    public int getTelContacte() {
         return telContacte;
     }
 }

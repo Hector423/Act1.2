@@ -44,7 +44,7 @@ public class GestorBBDD  extends SQLiteOpenHelper {
      *
      * @author Laura Lopez
      */
-    public void guardarRegistre(String nom, String cognom, String dni, String telContacte,
+    public void guardarRegistre(String nom, String cognom, String dni, int telContacte,
                                  String email, String identificador, String Descripcio) {
         SQLiteDatabase db = this.getWritableDatabase();
         guardarRegistres(db, nom, cognom, dni, telContacte, email, identificador, Descripcio);
@@ -55,7 +55,7 @@ public class GestorBBDD  extends SQLiteOpenHelper {
      *
      * @author Laura Lopez
      */
-    private void guardarRegistres(SQLiteDatabase db, String nom, String cognom, String dni, String telContacte,
+    private void guardarRegistres(SQLiteDatabase db, String nom, String cognom, String dni, int telContacte,
                                   String email, String identificador, String Descripcio) {
         db.execSQL("insert into registros (nom, cognom, dni, telContacte, email, identificador, descripcio) " +
                     "values ('"+nom+"','"+cognom+"','"+dni+"','"+telContacte+"','"+email+"','"+identificador+"','"+Descripcio+"')");
@@ -82,7 +82,7 @@ return cursor;
                                                 cursor.getString(1),
                                                 cursor.getString(2),
                                                 cursor.getString(3),
-                                                cursor.getString(4),
+                                                cursor.getInt(4),
                                                 cursor.getString(5),
                                                 cursor.getString(6),
                                                 cursor.getString(7)));

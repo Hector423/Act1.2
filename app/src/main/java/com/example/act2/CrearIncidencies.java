@@ -21,7 +21,7 @@ public class CrearIncidencies extends AppCompatActivity {
     private Button cancelar, enviar;
 
     String nomV = "", cognomV= "", dniV= "", emailV= "",  identificadorV= "",  descripcioV= "";
-    String telContacteV = "";
+    int telContacteV = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -65,12 +65,13 @@ private void insertarDades() {
         nomV = nom.getText().toString();
         cognomV = cognom.getText().toString();
         dniV = dni.getText().toString();
-        telContacteV = telContacte.getText().toString();
+        String telContacteString = telContacte.getText().toString();
+        telContacteV = Integer.parseInt(telContacteString);
         emailV = email.getText().toString();
         identificadorV = identificador.getText().toString();
         descripcioV = descripcio.getText().toString();
 
-        if(!nomV.isEmpty() && !cognomV.isEmpty() && !dniV.isEmpty() && !telContacteV.isEmpty() && !emailV.isEmpty() && !identificadorV.isEmpty() && !descripcioV.isEmpty()){
+        if(!nomV.isEmpty() && !cognomV.isEmpty() && !dniV.isEmpty() && !emailV.isEmpty() && !identificadorV.isEmpty() && !descripcioV.isEmpty()){
             GestorBBDD gestorBBDD = new GestorBBDD(this);
             gestorBBDD.guardarRegistre( nomV, cognomV,  dniV,  telContacteV, emailV,  identificadorV,  descripcioV);
         }
