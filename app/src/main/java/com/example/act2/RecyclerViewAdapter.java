@@ -16,17 +16,17 @@
 //     * (custom ViewHolder).
 //     */
 //    public static class ViewHolder extends RecyclerView.ViewHolder {
-//        private final TextView textView;
+//        private final TextView databaseText;
 //
 //        public ViewHolder(View view) {
 //            super(view);
 //            // Define click listener for the ViewHolder's View
 //
-//            textView = (TextView) view.findViewById(R.id.textView);
+//            databaseText = (TextView) view.findViewById(R.id.databaseText);
 //        }
 //
 //        public TextView getTextView() {
-//            return textView;
+//            return databaseText;
 //        }
 //    }
 //

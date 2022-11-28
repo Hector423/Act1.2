@@ -7,25 +7,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LlistarIncidencies extends AppCompatActivity
 {
-    public ArrayList<Registro> databaseListEntries; // <- es necessari?
+    public ArrayList<Registro> databaseListEntries; // <- es necessari? <- Sep, es necessari
     public Registro[] databaserrayEntries;
 
     GestorBBDD gestorBBDD;
 
     public NotificationManager notificationManager;
 
-    RecyclerView recyclerView;
+//    RecyclerView recyclerView;
 
     Button notificacionButton;
 
-    TextView textView;
+    TextView databaseText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,14 +35,14 @@ public class LlistarIncidencies extends AppCompatActivity
         //recyclerView = findViewById(R.id.recycler);
 
         notificacionButton = (Button)findViewById(R.id.leButton);
-        textView = (TextView)findViewById(R.id.leText);
+        databaseText = (TextView)findViewById(R.id.leText);
 
         notificacionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 //                result.setText("Hello "+name.getText());
-                hola();
+                mostrarNotificacio();
             }
         });
 
@@ -89,7 +88,7 @@ public class LlistarIncidencies extends AppCompatActivity
         gestorBBDD = new GestorBBDD(this);
         databaseListEntries = gestorBBDD.llegirRegistres();
 //        databaserrayEntries = gestorBBDD.llegirRegistres().toArray(new Registro[0]);
-        databaserrayEntries = gestorBBDD.llegirRegistres().toArray(new Registro[gestorBBDD.llegirRegistres().toArray().length]);
+//        databaserrayEntries = gestorBBDD.llegirRegistres().toArray(new Registro[gestorBBDD.llegirRegistres().toArray().length]);
 
         System.out.println("databaseListEntries.size() = " + databaseListEntries.size());
 
@@ -103,7 +102,7 @@ public class LlistarIncidencies extends AppCompatActivity
             textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).descripcio+"\n\n------------------------------\n");
         }
 
-        textView.setText(textForTextingTheTextView);
+        databaseText.setText(textForTextingTheTextView);
 
         // mostrar el contingut de databaseListEntries dins de recyclerView
 //        recyclerView
@@ -129,7 +128,7 @@ public class LlistarIncidencies extends AppCompatActivity
 //        listView.setAdapter(simpleAdapter);
     }
 
-    private void hola() {
+    private void mostrarNotificacio() {
 
 //        Notification.Builder notificationBuilder = null;
 
