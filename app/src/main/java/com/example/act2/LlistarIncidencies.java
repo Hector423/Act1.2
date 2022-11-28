@@ -8,16 +8,16 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class LlistarIncidencies extends AppCompatActivity
 {
     public ArrayList<Registro> databaseListEntries; // <- es necessari?
+    public Registro[] databaserrayEntries;
 
     GestorBBDD gestorBBDD;
 
@@ -87,15 +87,29 @@ public class LlistarIncidencies extends AppCompatActivity
 
         gestorBBDD = new GestorBBDD(this);
         databaseListEntries = gestorBBDD.llegirRegistres();
+//        databaserrayEntries = gestorBBDD.llegirRegistres().toArray(new Registro[0]);
+        databaserrayEntries = gestorBBDD.llegirRegistres().toArray(new Registro[gestorBBDD.llegirRegistres().toArray().length]);
 
         // mostrar el contingut de databaseListEntries dins de recyclerView
 //        recyclerView
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        String[] from = {"listview_image", "listview_title", "listview_discription"};
-        int[] to = {R.id.listview_image, R.id.listview_item_title, R.id.listview_item_short_description};
+        String[] from = {/*"listview_image",*/ "listview_title", "listview_discription"};
+        int[] to = {/*R.id.listview_image,*/ R.id.listview_item_title, R.id.listview_item_short_description};
 
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), (List<? extends Map<String,?>>)databaseListEntries, R.layout.listview_activity, from, to);
+        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
+
+        for(int i=0; i<=databaserrayEntries.length; i++)
+        {
+            HashMap<String, String> hm = new HashMap<String, String>();
+            hm.put("listview_title", databaserrayEntries[i].identificador);
+            hm.put("listview_discription", databaserrayEntries[i].descripcio);
+            //hm.put("listview_image", Integer.toString(listviewImage[i]));
+            hm.put("listview_image", "");
+            aList.add(hm);
+        }
+
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.listview_activity, from, to);
         ListView listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(simpleAdapter);
     }

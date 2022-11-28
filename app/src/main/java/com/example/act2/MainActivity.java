@@ -1,21 +1,14 @@
 package com.example.act2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -51,7 +44,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                obrirConexio();
+                //obrirConexio();
+
+                openLlistarIncidencies();
             }
         });
 
@@ -93,7 +88,3 @@ public class MainActivity extends AppCompatActivity
         // Posar aqui el codi per obrir l'activitat del tercer botó
     }
     }
-
-
-
-
