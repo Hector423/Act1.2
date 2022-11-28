@@ -4,14 +4,12 @@ import android.app.Notification;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class LlistarIncidencies extends AppCompatActivity
@@ -27,6 +25,8 @@ public class LlistarIncidencies extends AppCompatActivity
 
     Button notificacionButton;
 
+    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -36,6 +36,7 @@ public class LlistarIncidencies extends AppCompatActivity
         //recyclerView = findViewById(R.id.recycler);
 
         notificacionButton = (Button)findViewById(R.id.leButton);
+        textView = (TextView)findViewById(R.id.leText);
 
         notificacionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,28 +93,40 @@ public class LlistarIncidencies extends AppCompatActivity
 
         System.out.println("databaseListEntries.size() = " + databaseListEntries.size());
 
+        String textForTextingTheTextView = "";
+
+        for(int i=0; i<databaseListEntries.size(); i++)
+        {
+            textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).id+": "+databaseListEntries.get(i).identificador+"\n");
+            textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).nom+" "+databaseListEntries.get(i).cognom+" ("+databaseListEntries.get(i).dni+")\n");
+            textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).telContacte+"\n");
+            textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).descripcio+"\n\n------------------------------\n");
+        }
+
+        textView.setText(textForTextingTheTextView);
+
         // mostrar el contingut de databaseListEntries dins de recyclerView
 //        recyclerView
         //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        String[] from = {/*"listview_image",*/ "listview_title", "listview_discription"};
-        int[] to = {/*R.id.listview_image,*/ R.id.listview_item_title, R.id.listview_item_short_description};
+//        String[] from = {/*"listview_image",*/ "listview_title", "listview_discription"};
+//        int[] to = {/*R.id.listview_image,*/ R.id.listview_item_title, R.id.listview_item_short_description};
 
-        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
+//        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
-        for(int i=0; i==databaseListEntries.size(); i++)
-        {
-            HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("listview_title", databaseListEntries.get(i).identificador);
-            hm.put("listview_discription", databaseListEntries.get(i).descripcio);
+//        for(int i=0; i==databaseListEntries.size(); i++)
+//        {
+//            HashMap<String, String> hm = new HashMap<String, String>();
+//            hm.put("listview_title", databaseListEntries.get(i).identificador);
+//            hm.put("listview_discription", databaseListEntries.get(i).descripcio);
             //hm.put("listview_image", Integer.toString(listviewImage[i]));
 //            hm.put("listview_image", "");
-            aList.add(hm);
-        }
+//            aList.add(hm);
+//        }
 
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.listview_activity, from, to);
-        ListView listView = (ListView)findViewById(R.id.list);
-        listView.setAdapter(simpleAdapter);
+//        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.listview_activity, from, to);
+//        ListView listView = (ListView)findViewById(R.id.list);
+//        listView.setAdapter(simpleAdapter);
     }
 
     private void hola() {
