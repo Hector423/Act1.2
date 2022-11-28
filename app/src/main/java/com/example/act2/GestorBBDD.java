@@ -19,7 +19,16 @@ public class GestorBBDD  extends SQLiteOpenHelper {
     }
 
 
+    /**
+     * La BBDD la em decidit fer al final amb SQLite ja que fent una BBDD amb MySQL ens donava un error de
+     * connexió i no podiem avançar
+     */
 
+
+    /**
+     *
+     * Aquí es crea la taula per guardar els registres
+     */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE registros ("
@@ -40,9 +49,8 @@ public class GestorBBDD  extends SQLiteOpenHelper {
     }
 
     /**
-     * Metodo para indicar el plato a dar de alta en la BD
+     * Aquest es el metode que utlitzem per recollir les dades
      *
-     * @author Laura Lopez
      */
     public void guardarRegistre(String nom, String cognom, String dni, int telContacte,
                                  String email, String identificador, String Descripcio) {
@@ -51,9 +59,8 @@ public class GestorBBDD  extends SQLiteOpenHelper {
     }
 
     /**
-     * Metodo para introducir el plato en la BDS
+     * Amb aquest metode fem l'insert a la taula amb les dades que ha introduit l'usuari
      *
-     * @author Laura Lopez
      */
     private void guardarRegistres(SQLiteDatabase db, String nom, String cognom, String dni, int telContacte,
                                   String email, String identificador, String Descripcio) {
@@ -62,11 +69,11 @@ public class GestorBBDD  extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Cursor llegir(){
-        SQLiteDatabase gestorBBDD = this.getReadableDatabase();
-        Cursor cursor = gestorBBDD.rawQuery("SELECT * FROM registros", null);
-return cursor;
-    }
+    /**
+     *
+     * Amb aquest metode llegim el que hi ha a la taula, recollim les dades i les guardem a la clase Registro,
+     *  per despres poder imprimir per pantalla.
+     */
 
     public ArrayList<Registro> llegirRegistres(){
 

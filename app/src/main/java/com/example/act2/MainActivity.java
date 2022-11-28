@@ -24,19 +24,27 @@ public class MainActivity extends AppCompatActivity
     String nom = "nom3", cognom= "cognom", dni= "nom2", email= "nom3",  identificador= "nom4",  Descripcio= "nom5";
     int telContacte = 3123;
 
-
+    /**
+     * En la clase principal, tenim 3 botons que porten a les diferents pantalles de l'aplicació
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
+        /**
+         * Aquí assignem els botons
+         */
         setContentView(R.layout.activity_main);
         crearIncidencia = (Button)findViewById(R.id.botoIncidencies);
         llistarIncidencies = findViewById(R.id.llistarIncidencia);
         resoldreIncidencies = findViewById(R.id.resoldreIncidencia);
         llistar = findViewById(R.id.llistatBBDD);
 
-
+        /**
+         * Aquí comencem a implementar quan es cliquin els botons, que ho portin a les diferents pantalles
+         */
         crearIncidencia.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -57,6 +65,9 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * Aquí tenim els diferents metodes per cridar les clases corresponents
+     */
     public void openCrearIncidencies()
     {
         Intent intent = new Intent(this, CrearIncidencies.class);
@@ -85,6 +96,7 @@ public class MainActivity extends AppCompatActivity
         llistar.append("Prova: " + arrayList.get(0).getEmail() + "\n");
         llistar.append("Prova: " + arrayList.get(0).getIdentificador() + "\n");
         llistar.append("Prova: " + arrayList.get(0).getDescripcio() + "\n");
+        llistar.append("-------------------------------------------");
 
 
     }

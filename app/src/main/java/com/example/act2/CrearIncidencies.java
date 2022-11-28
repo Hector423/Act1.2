@@ -15,6 +15,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+
+/**
+ * En aquesta clase agafem les dades de l'inicidencia, i cridem els metodes necessaris dins de la clase GestorBBDD
+ * per guardar les dades
+ */
 public class CrearIncidencies extends AppCompatActivity {
 
     private TextView nom, cognom, dni, email, descripcio, identificador, telContacte;
@@ -27,6 +33,9 @@ public class CrearIncidencies extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
+        /**
+         * Aquí assignem les variables amb els camps de entrada del cuestionari
+         */
         setContentView(R.layout.activity_crear_incidencies);
         nom = findViewById(R.id.nomInformador);
         cognom = findViewById(R.id.cognomInformador);
@@ -38,6 +47,10 @@ public class CrearIncidencies extends AppCompatActivity {
         cancelar = findViewById(R.id.cancelar);
         enviar = findViewById(R.id.enviar);
 
+
+        /**
+         * Aquí els hi posem als botons els diferents metodes perque pugin funcionar
+         */
         cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,15 +64,15 @@ public class CrearIncidencies extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * I aquí al final tenim els metodes que s'utilitzen en aquesta clase
+     */
     public void openTornarMain(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-//    public void openEnviarDades(){
-//        Intent intent = new Intent(this, ContentProviderBotoCrear.class);
-//        startActivity(intent);
-//    }
 private void insertarDades() {
 
         nomV = nom.getText().toString();
@@ -71,7 +84,10 @@ private void insertarDades() {
         identificadorV = identificador.getText().toString();
         descripcioV = descripcio.getText().toString();
 
-        if(!nomV.isEmpty() && !cognomV.isEmpty() && !dniV.isEmpty() && !emailV.isEmpty() && !identificadorV.isEmpty() && !descripcioV.isEmpty()){
+    /**
+     * Aquí es comprova que que els camps no estiguin buits, si hi ha algun mostrara el missatge per pantalla
+     */
+    if(!nomV.isEmpty() && !cognomV.isEmpty() && !dniV.isEmpty() && !emailV.isEmpty() && !identificadorV.isEmpty() && !descripcioV.isEmpty()){
             GestorBBDD gestorBBDD = new GestorBBDD(this);
             gestorBBDD.guardarRegistre( nomV, cognomV,  dniV,  telContacteV, emailV,  identificadorV,  descripcioV);
         }else{

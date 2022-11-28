@@ -1,5 +1,9 @@
 package com.example.act2;
 
+/**
+ * Aquesta clase es per guardar les dades quan les treiem de la taula i despres poder imprimir-les
+ */
+
 public class Registro {
     String nom, cognom, dni, descripcio, identificador, email;
     int telContacte;
