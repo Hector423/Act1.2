@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                //obrirConexio();
+                obrirConexio();
 
                 openLlistarIncidencies();
             }

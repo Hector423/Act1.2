@@ -90,6 +90,8 @@ public class LlistarIncidencies extends AppCompatActivity
 //        databaserrayEntries = gestorBBDD.llegirRegistres().toArray(new Registro[0]);
         databaserrayEntries = gestorBBDD.llegirRegistres().toArray(new Registro[gestorBBDD.llegirRegistres().toArray().length]);
 
+        System.out.println("databaseListEntries.size() = " + databaseListEntries.size());
+
         // mostrar el contingut de databaseListEntries dins de recyclerView
 //        recyclerView
         //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -99,13 +101,13 @@ public class LlistarIncidencies extends AppCompatActivity
 
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
-        for(int i=0; i<=databaserrayEntries.length; i++)
+        for(int i=0; i==databaseListEntries.size(); i++)
         {
             HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("listview_title", databaserrayEntries[i].identificador);
-            hm.put("listview_discription", databaserrayEntries[i].descripcio);
+            hm.put("listview_title", databaseListEntries.get(i).identificador);
+            hm.put("listview_discription", databaseListEntries.get(i).descripcio);
             //hm.put("listview_image", Integer.toString(listviewImage[i]));
-            hm.put("listview_image", "");
+//            hm.put("listview_image", "");
             aList.add(hm);
         }
 
