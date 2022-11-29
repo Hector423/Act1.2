@@ -59,6 +59,7 @@ public class LlistarIncidencies extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llistar_incidencies);
+        notificationManager = new NotificationManager(this);
 
         notificacionButton = (Button)findViewById(R.id.leButton);
         backButton = (Button)findViewById(R.id.leReturn);
@@ -67,24 +68,22 @@ public class LlistarIncidencies extends AppCompatActivity
         notificacionButton.setOnClickListener(v -> showNotification());
         backButton.setOnClickListener(v -> openMain());
 
-        /*
-        Notification.Builder notificationBuilder = null;
-        switch (id) {
-            case notification_one:
-                notificationBuilder = notificationHelper.getNotification1(title,
-                        getString(R.string.channel_one_body));
-                break;
-
-            case notification_two:
-                notificationBuilder = notificationHelper.getNotification2(title,
-                        getString(R.string.channel_two_body));
-                break;
-        }
-
-        if (notificationBuilder != null) {
-            notificationHelper.notify(id, notificationBuilder);
-        }
-        *  */
+//        Notification.Builder notificationBuilder = null;
+//        switch (id) {
+//            case notification_one:
+//                notificationBuilder = notificationHelper.getNotification1(title,
+//                        getString(R.string.channel_one_body));
+//                break;
+//
+//            case notification_two:
+//                notificationBuilder = notificationHelper.getNotification2(title,
+//                        getString(R.string.channel_two_body));
+//                break;
+//        }
+//
+//        if (notificationBuilder != null) {
+//            notificationHelper.notify(id, notificationBuilder);
+//        }
 
         gestorBBDD = new GestorBBDD(this);
         databaseListEntries = gestorBBDD.llegirRegistres();
