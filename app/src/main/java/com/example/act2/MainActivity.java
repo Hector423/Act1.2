@@ -2,7 +2,6 @@ package com.example.act2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -10,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+@SuppressWarnings({"unused", "FieldCanBeLocal"})
 public class MainActivity extends AppCompatActivity
 {
     private Button crearIncidencia, llistarIncidencies, resoldreIncidencies;
@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * En la clase principal, tenim 3 botons que porten a les diferents pantalles de l'aplicació
-     *
      */
+    @SuppressWarnings({"RedundantCast", "DanglingJavadoc"})
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,26 +38,13 @@ public class MainActivity extends AppCompatActivity
         /**
          * Aquí comencem a implementar quan es cliquin els botons, que ho portin a les diferents pantalles
          */
-        crearIncidencia.setOnClickListener(new View.OnClickListener()
+        crearIncidencia.setOnClickListener(v -> openCrearIncidencies());
+
+        llistarIncidencies.setOnClickListener(v ->
         {
-            @Override
-            public void onClick(View v)
-            {
-                openCrearIncidencies();
-            }
+            obrirConexio();
+            openLlistarIncidencies();
         });
-
-        llistarIncidencies.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                obrirConexio();
-
-                openLlistarIncidencies();
-            }
-        });
-
     }
 
     /**
@@ -75,14 +62,13 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-
-    private void obrirConexio() {
+    private void obrirConexio()
+    {
         GestorBBDD gestorBBDD = new GestorBBDD(this);
         ArrayList<Registro> arrayList;
         arrayList = gestorBBDD.llegirRegistres();
 
         llistar.setText("");
-
         llistar.append("Prova: " + arrayList.get(0).getId() + "\n");
         llistar.append("Prova: " + arrayList.get(0).getNom() + "\n");
         llistar.append("Prova: " + arrayList.get(0).getCognom() + "\n");
@@ -92,11 +78,10 @@ public class MainActivity extends AppCompatActivity
         llistar.append("Prova: " + arrayList.get(0).getIdentificador() + "\n");
         llistar.append("Prova: " + arrayList.get(0).getDescripcio() + "\n");
         llistar.append("-------------------------------------------");
-
-
     }
+
     public void openResoldreIncidencies()
     {
-        // Posar aqui el codi per obrir l'activitat del tercer botó
+        // Aqui aniría el codi per obrir l'activitat del tercer botó...
     }
-    }
+}

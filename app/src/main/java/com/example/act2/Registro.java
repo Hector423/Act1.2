@@ -3,13 +3,16 @@ package com.example.act2;
 /**
  * Aquesta clase es per guardar les dades quan les treiem de la taula i despres poder imprimir-les
  */
-
-public class Registro {
+public class Registro
+{
     String nom, cognom, dni, descripcio, identificador, email;
     int telContacte;
     int id;
 
-    public Registro (int id, String nom_, String cognom_, String dni_, int telContacte_,String email_, String identificador_, String descripcio_){
+    @SuppressWarnings("unused")
+    public Registro(int id, String nom_, String cognom_, String dni_, int telContacte_,
+                    String email_, String identificador_, String descripcio_)
+    {
         nom = nom_;
         cognom = cognom_;
         dni = dni_;
@@ -19,7 +22,9 @@ public class Registro {
         descripcio = descripcio_;
     }
 
-    public Registro() {
+    @SuppressWarnings("unused")
+    public Registro()
+    {
 
     }
 

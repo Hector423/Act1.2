@@ -5,7 +5,6 @@ import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -13,23 +12,49 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+/**
+ * Classe per l'activity de Llistar Incidencies
+ */
 public class LlistarIncidencies extends AppCompatActivity
 {
+    /**
+     * Instancia per interactuar amb la classe de notificacions
+     */
     public NotificationManager notificationManager;
 
+    /**
+     * L'ArrayList on guardarem les dades rebudes de la consulta de la BD
+     */
     public ArrayList<Registro> databaseListEntries;
 
+    /**
+     * Instancia per interactuar amb la BD
+     */
     public GestorBBDD gestorBBDD;
 
+    /**
+     * Botó que mostrará una notificació en fer-hi click
+     */
     public Button notificacionButton;
 
+    /**
+     * Botó que tornará a la pantalla principal
+     */
     public Button backButton;
 
+    /**
+     * El TextView on hi mostrarem les dades de la base de dades
+     */
     public TextView databaseText;
 
+    /**
+     * Metode que s'executa automaticament en obrir l'activitat
+     *
+     * @param savedInstanceState
+     */
     @Override
     @SuppressLint("SetTextI18n")
-    @SuppressWarnings("RedundantCast")
+    @SuppressWarnings({"RedundantCast", "JavaDoc"})
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -39,23 +64,8 @@ public class LlistarIncidencies extends AppCompatActivity
         backButton = (Button)findViewById(R.id.leReturn);
         databaseText = (TextView)findViewById(R.id.leText);
 
-        notificacionButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                showNotification();
-            }
-        });
-
-        backButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                openMain();
-            }
-        });
+        notificacionButton.setOnClickListener(v -> showNotification());
+        backButton.setOnClickListener(v -> openMain());
 
         /*
         Notification.Builder notificationBuilder = null;
@@ -93,7 +103,12 @@ public class LlistarIncidencies extends AppCompatActivity
         databaseText.setMovementMethod(new ScrollingMovementMethod());
     }
 
-    private void showNotification() {
+    /**
+     * Funció per mostrar la notificació en premer el botó corresponent.
+     */
+    @SuppressWarnings("CommentedOutCode")
+    public void showNotification()
+    {
 
 //        Notification.Builder notificationBuilder = null;
 
@@ -106,6 +121,9 @@ public class LlistarIncidencies extends AppCompatActivity
         notificationManager.notify(101, notificationBuilder);
     }
 
+    /**
+     * Funció per tornar a la MainActivity.
+     */
     public void openMain()
     {
         Intent intent = new Intent(this, MainActivity.class);
