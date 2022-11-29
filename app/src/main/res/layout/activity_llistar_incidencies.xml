@@ -18,7 +18,7 @@
         android:text="Placeholder for the database information"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="NotSibling"
+        tools:ignore="HardcodedText,MissingConstraints,NotSibling"
         tools:layout_editor_absoluteX="77dp" />
 
     <LinearLayout
@@ -33,26 +33,15 @@
             android:id="@+id/leReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel·lar" />
+            android:text="Cancel·lar"
+            tools:ignore="ButtonStyle,HardcodedText" />
 
         <Button
             android:id="@+id/leButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Incidenceis per resoldre"
-            tools:ignore="HardcodedText,MissingConstraints" />
+            tools:ignore="ButtonStyle,HardcodedText,MissingConstraints" />
     </LinearLayout>
-    <!--        android:clickable="true"-->
-<!--        android:onClick="buttonOnClick"-->
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recycler"-->
-<!--        style="@android:style/Widget.Material.Light.ListView"-->
-<!--        android:layout_width="409dp"-->
-<!--        android:layout_height="555dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteY="175dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

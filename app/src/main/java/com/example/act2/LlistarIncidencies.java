@@ -1,5 +1,6 @@
 package com.example.act2;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,45 +15,44 @@ import java.util.ArrayList;
 
 public class LlistarIncidencies extends AppCompatActivity
 {
-    public ArrayList<Registro> databaseListEntries; // <- es necessari? <- Sep, es necessari
-    public Registro[] databaserrayEntries;
-
-    GestorBBDD gestorBBDD;
-
     public NotificationManager notificationManager;
 
-//    RecyclerView recyclerView;
+    public ArrayList<Registro> databaseListEntries;
 
-    Button notificacionButton;
+    public GestorBBDD gestorBBDD;
 
-    Button backButton;
+    public Button notificacionButton;
 
-    TextView databaseText;
+    public Button backButton;
+
+    public TextView databaseText;
 
     @Override
+    @SuppressLint("SetTextI18n")
+    @SuppressWarnings("RedundantCast")
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llistar_incidencies);
 
-        //recyclerView = findViewById(R.id.recycler);
-
         notificacionButton = (Button)findViewById(R.id.leButton);
         backButton = (Button)findViewById(R.id.leReturn);
         databaseText = (TextView)findViewById(R.id.leText);
 
-        notificacionButton.setOnClickListener(new View.OnClickListener() {
+        notificacionButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-
-//                result.setText("Hello "+name.getText());
+            public void onClick(View v)
+            {
                 showNotification();
             }
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 openMain();
             }
         });
@@ -76,76 +76,21 @@ public class LlistarIncidencies extends AppCompatActivity
         }
         *  */
 
-//        notificacionButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                Notification.Builder notificationBuilder = null;
-//
-//                notificationBuilder = notificationManager.getNotificationNothing("No tens cap incidencia restant","Tens 0 incidencies per resoldre. Bona feina!");
-//
-//                notificationManager.notify(101, notificationBuilder);
-//            }
-//        });
-
-
-
-
-        // aqui es on s'hauría d'omplir el databaseListEntries amb lo de la BD
-
-        //databaseListEntries = (ArrayList<DatabaseListEntry>)getAllEntries();
-
         gestorBBDD = new GestorBBDD(this);
         databaseListEntries = gestorBBDD.llegirRegistres();
-//        databaserrayEntries = gestorBBDD.llegirRegistres().toArray(new Registro[0]);
-//        databaserrayEntries = gestorBBDD.llegirRegistres().toArray(new Registro[gestorBBDD.llegirRegistres().toArray().length]);
 
         System.out.println("databaseListEntries.size() = " + databaseListEntries.size());
-
         String textToShow = "";
 
-        for(int i=0; i<databaseListEntries.size(); i++)
-        {
-//            textToShow = textToShow.concat(databaseListEntries.get(i).id+": "+databaseListEntries.get(i).identificador+"\n");
-//            textToShow = textToShow.concat(databaseListEntries.get(i).nom+" "+databaseListEntries.get(i).cognom+" ("+databaseListEntries.get(i).dni+")\n");
-//            textToShow = textToShow.concat(databaseListEntries.get(i).telContacte+"\n");
-//            textToShow = textToShow.concat(databaseListEntries.get(i).descripcio+"\n\n------------------------------\n");
-
-            textToShow = textToShow.concat(databaseListEntries.get(i).id
-                    + ": "+databaseListEntries.get(i).identificador + "\n" + databaseListEntries.get(i).nom
-                    + " "+databaseListEntries.get(i).cognom + " (" + databaseListEntries.get(i).dni + ")\n"
-                    + databaseListEntries.get(i).telContacte + "\n"+databaseListEntries.get(i).descripcio
-                    + "\n\n------------------------------\n");
-
-        }
-
+        for(int i=0; i<databaseListEntries.size(); i++) textToShow = textToShow.concat
+        (
+            databaseListEntries.get(i).id + ": " + databaseListEntries.get(i).identificador + "\n"
+                + databaseListEntries.get(i).nom + " " + databaseListEntries.get(i).cognom + " ("
+                + databaseListEntries.get(i).dni + ")\n" + databaseListEntries.get(i).telContacte
+                + "\n" + databaseListEntries.get(i).descripcio + "\n\n------------------------------\n"
+        );
         databaseText.setText(textToShow +"\n\n\n\n\n");
-
         databaseText.setMovementMethod(new ScrollingMovementMethod());
-
-        // mostrar el contingut de databaseListEntries dins de recyclerView
-//        recyclerView
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-//        String[] from = {/*"listview_image",*/ "listview_title", "listview_discription"};
-//        int[] to = {/*R.id.listview_image,*/ R.id.listview_item_title, R.id.listview_item_short_description};
-
-//        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
-
-//        for(int i=0; i==databaseListEntries.size(); i++)
-//        {
-//            HashMap<String, String> hm = new HashMap<String, String>();
-//            hm.put("listview_title", databaseListEntries.get(i).identificador);
-//            hm.put("listview_discription", databaseListEntries.get(i).descripcio);
-            //hm.put("listview_image", Integer.toString(listviewImage[i]));
-//            hm.put("listview_image", "");
-//            aList.add(hm);
-//        }
-
-//        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.listview_activity, from, to);
-//        ListView listView = (ListView)findViewById(R.id.list);
-//        listView.setAdapter(simpleAdapter);
     }
 
     private void showNotification() {
@@ -160,23 +105,6 @@ public class LlistarIncidencies extends AppCompatActivity
 
         notificationManager.notify(101, notificationBuilder);
     }
-
-    // things lol:
-    // -> https://stackoverflow.com/questions/39248772/how-to-add-content-in-recyclerview-dynamically#39249026
-//    @SuppressWarnings("Convert2Diamond")
-//    public List<DatabaseListEntry> getAllEntries()
-//    {
-//        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-//        databaseListEntries = new ArrayList<Registro>();
-//        String selectQuery = "SELECT * FROM llista"; //TODO canviar el nom de la taula
-//        Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
-
-//        if(cursor.moveToFirst())
-//        {
-
-//        }
-//        return null;
-//    }
 
     public void openMain()
     {
