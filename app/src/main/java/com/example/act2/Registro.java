@@ -28,35 +28,50 @@ public class Registro
 
     }
 
-    public String getCognom() {
+    @SuppressWarnings("unused")
+    public String getCognom()
+    {
         return cognom;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public String getNom() {
+    @SuppressWarnings("unused")
+    public String getNom()
+    {
         return nom;
     }
 
-    public String getDni() {
+    @SuppressWarnings("unused")
+    public String getDni()
+    {
         return dni;
     }
 
-    public String getDescripcio() {
+    @SuppressWarnings("unused")
+    public String getDescripcio()
+    {
         return descripcio;
     }
 
-    public String getIdentificador() {
+    @SuppressWarnings("unused")
+    public String getIdentificador()
+    {
         return identificador;
     }
 
-    public String getEmail() {
+    @SuppressWarnings("unused")
+    public String getEmail()
+    {
         return email;
     }
 
-    public int getTelContacte() {
+    @SuppressWarnings("unused")
+    public int getTelContacte()
+    {
         return telContacte;
     }
 }
