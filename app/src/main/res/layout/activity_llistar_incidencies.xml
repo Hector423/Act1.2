@@ -6,11 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".LlistarIncidencies">
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/leText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="222dp"
-        tools:layout_editor_absoluteY="126dp" />
+        android:isScrollContainer="true"
+        android:justificationMode="inter_word"
+        android:nestedScrollingEnabled="true"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:text="Placeholder for the database information"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,NotSibling"
+        tools:layout_editor_absoluteX="77dp" />
+
+    <LinearLayout
+        android:layout_width="382dp"
+        android:layout_height="96dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/leReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel·lar"
+            tools:ignore="ButtonStyle,HardcodedText" />
+
+        <Button
+            android:id="@+id/leButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Incidenceis per resoldre"
+            tools:ignore="ButtonStyle,HardcodedText,MissingConstraints" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
