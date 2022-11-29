@@ -100,6 +100,8 @@ public class LlistarIncidencies extends AppCompatActivity
         );
         databaseText.setText(textToShow +"\n\n\n\n\n");
         databaseText.setMovementMethod(new ScrollingMovementMethod());
+
+//        gestorBBDD.close();
     }
 
     /**
@@ -109,15 +111,26 @@ public class LlistarIncidencies extends AppCompatActivity
     public void showNotification()
     {
 
-//        Notification.Builder notificationBuilder = null;
+        Notification.Builder notificationBuilder = null;
+//        notificationBuilder.build(notification_one, getChannelOneText());
 
-//        postNotification(notification_one, getChannelOneText());
+//        Notification.Builder notificationBuilder;
 
-        Notification.Builder notificationBuilder;
+//        gestorBBDD = new GestorBBDD(this);
+//        databaseListEntries = gestorBBDD.llegirRegistres();
 
-        notificationBuilder = notificationManager.getNotificationNothing("No tens cap incidencia restant","Tens 0 incidencies per resoldre. Bona feina!");
+        if(databaseListEntries.size()==0)
+        {
+            notificationBuilder = notificationManager.getNotificationNothing("No tens cap incidencia restant","Tens 0 incidencies per resoldre. Bona feina!");
 
-        notificationManager.notify(101, notificationBuilder);
+            if(notificationBuilder!=null) notificationManager.notify(101, notificationBuilder);
+        }
+        else
+        {
+            notificationBuilder = notificationManager.getNotificationNothing("Et queden incidencies per resoldre!","Tens "+databaseListEntries.size()+" incidencies per resoldre. Bona feina!");
+
+            if(notificationBuilder!=null) notificationManager.notify(102, notificationBuilder);
+        }
     }
 
     /**

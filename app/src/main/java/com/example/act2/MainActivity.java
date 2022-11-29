@@ -62,6 +62,15 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    @SuppressWarnings("UnusedAssignment")
+    private void obrirConexio()
+    {
+        GestorBBDD gestorBBDD = new GestorBBDD(this);
+        ArrayList<Registro> arrayList;
+        arrayList = gestorBBDD.llegirRegistres();
+
+        llistar.setText("");
+    }
 
     public void openResoldreIncidencies()
     {
