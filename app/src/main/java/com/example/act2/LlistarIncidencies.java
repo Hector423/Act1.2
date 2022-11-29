@@ -46,14 +46,14 @@ public class LlistarIncidencies extends AppCompatActivity
             public void onClick(View v) {
 
 //                result.setText("Hello "+name.getText());
-                mostrarNotificacio();
+                showNotification();
             }
         });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonOnClick();
+                openMain();
             }
         });
 
@@ -103,17 +103,24 @@ public class LlistarIncidencies extends AppCompatActivity
 
         System.out.println("databaseListEntries.size() = " + databaseListEntries.size());
 
-        String textForTextingTheTextView = "";
+        String textToShow = "";
 
         for(int i=0; i<databaseListEntries.size(); i++)
         {
-            textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).id+": "+databaseListEntries.get(i).identificador+"\n");
-            textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).nom+" "+databaseListEntries.get(i).cognom+" ("+databaseListEntries.get(i).dni+")\n");
-            textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).telContacte+"\n");
-            textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).descripcio+"\n\n------------------------------\n");
+//            textToShow = textToShow.concat(databaseListEntries.get(i).id+": "+databaseListEntries.get(i).identificador+"\n");
+//            textToShow = textToShow.concat(databaseListEntries.get(i).nom+" "+databaseListEntries.get(i).cognom+" ("+databaseListEntries.get(i).dni+")\n");
+//            textToShow = textToShow.concat(databaseListEntries.get(i).telContacte+"\n");
+//            textToShow = textToShow.concat(databaseListEntries.get(i).descripcio+"\n\n------------------------------\n");
+
+            textToShow = textToShow.concat(databaseListEntries.get(i).id
+                    + ": "+databaseListEntries.get(i).identificador + "\n" + databaseListEntries.get(i).nom
+                    + " "+databaseListEntries.get(i).cognom + " (" + databaseListEntries.get(i).dni + ")\n"
+                    + databaseListEntries.get(i).telContacte + "\n"+databaseListEntries.get(i).descripcio
+                    + "\n\n------------------------------\n");
+
         }
 
-        databaseText.setText(textForTextingTheTextView+"\n\n\n\n\n");
+        databaseText.setText(textToShow +"\n\n\n\n\n");
 
         databaseText.setMovementMethod(new ScrollingMovementMethod());
 
@@ -141,7 +148,7 @@ public class LlistarIncidencies extends AppCompatActivity
 //        listView.setAdapter(simpleAdapter);
     }
 
-    private void mostrarNotificacio() {
+    private void showNotification() {
 
 //        Notification.Builder notificationBuilder = null;
 
@@ -171,7 +178,7 @@ public class LlistarIncidencies extends AppCompatActivity
 //        return null;
 //    }
 
-    public void buttonOnClick()
+    public void openMain()
     {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
