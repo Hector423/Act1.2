@@ -69,15 +69,6 @@ public class MainActivity extends AppCompatActivity
         arrayList = gestorBBDD.llegirRegistres();
 
         llistar.setText("");
-        llistar.append("Prova: " + arrayList.get(0).getId() + "\n");
-        llistar.append("Prova: " + arrayList.get(0).getNom() + "\n");
-        llistar.append("Prova: " + arrayList.get(0).getCognom() + "\n");
-        llistar.append("Prova: " + arrayList.get(0).getDni() + "\n");
-        llistar.append("Prova: " + arrayList.get(0).getTelContacte() + "\n");
-        llistar.append("Prova: " + arrayList.get(0).getEmail() + "\n");
-        llistar.append("Prova: " + arrayList.get(0).getIdentificador() + "\n");
-        llistar.append("Prova: " + arrayList.get(0).getDescripcio() + "\n");
-        llistar.append("-------------------------------------------");
     }
 
     public void openResoldreIncidencies()
