@@ -6,31 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".LlistarIncidencies">
 
-    <Button
-        android:id="@+id/leButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Incidenceis per resoldre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints"
-        tools:layout_editor_absoluteY="126dp" />
-
     <TextView
         android:id="@+id/leText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="86dp"
         android:isScrollContainer="true"
         android:justificationMode="inter_word"
         android:nestedScrollingEnabled="true"
+        android:scrollbars="vertical"
         android:singleLine="false"
         android:text="Placeholder for the database information"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="NotSibling"
+        tools:layout_editor_absoluteX="77dp" />
+
+    <LinearLayout
+        android:layout_width="382dp"
+        android:layout_height="96dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/leReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel·lar" />
+
+        <Button
+            android:id="@+id/leButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Incidenceis per resoldre"
+            tools:ignore="HardcodedText,MissingConstraints" />
+    </LinearLayout>
     <!--        android:clickable="true"-->
 <!--        android:onClick="buttonOnClick"-->
 

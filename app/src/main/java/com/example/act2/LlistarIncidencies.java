@@ -1,7 +1,9 @@
 package com.example.act2;
 
 import android.app.Notification;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,7 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LlistarIncidencies extends AppCompatActivity
 {
@@ -24,6 +25,8 @@ public class LlistarIncidencies extends AppCompatActivity
 
     Button notificacionButton;
 
+    Button backButton;
+
     TextView databaseText;
 
     @Override
@@ -35,6 +38,7 @@ public class LlistarIncidencies extends AppCompatActivity
         //recyclerView = findViewById(R.id.recycler);
 
         notificacionButton = (Button)findViewById(R.id.leButton);
+        backButton = (Button)findViewById(R.id.leReturn);
         databaseText = (TextView)findViewById(R.id.leText);
 
         notificacionButton.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +47,13 @@ public class LlistarIncidencies extends AppCompatActivity
 
 //                result.setText("Hello "+name.getText());
                 mostrarNotificacio();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonOnClick();
             }
         });
 
@@ -102,7 +113,9 @@ public class LlistarIncidencies extends AppCompatActivity
             textForTextingTheTextView = textForTextingTheTextView.concat(databaseListEntries.get(i).descripcio+"\n\n------------------------------\n");
         }
 
-        databaseText.setText(textForTextingTheTextView);
+        databaseText.setText(textForTextingTheTextView+"\n\n\n\n\n");
+
+        databaseText.setMovementMethod(new ScrollingMovementMethod());
 
         // mostrar el contingut de databaseListEntries dins de recyclerView
 //        recyclerView
@@ -143,23 +156,24 @@ public class LlistarIncidencies extends AppCompatActivity
 
     // things lol:
     // -> https://stackoverflow.com/questions/39248772/how-to-add-content-in-recyclerview-dynamically#39249026
-    @SuppressWarnings("Convert2Diamond")
-    public List<DatabaseListEntry> getAllEntries()
-    {
+//    @SuppressWarnings("Convert2Diamond")
+//    public List<DatabaseListEntry> getAllEntries()
+//    {
 //        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        databaseListEntries = new ArrayList<Registro>();
-        String selectQuery = "SELECT * FROM llista"; //TODO canviar el nom de la taula
+//        databaseListEntries = new ArrayList<Registro>();
+//        String selectQuery = "SELECT * FROM llista"; //TODO canviar el nom de la taula
 //        Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
 
 //        if(cursor.moveToFirst())
 //        {
 
 //        }
-        return null;
-    }
+//        return null;
+//    }
 
-    public void buttonOnClick(View view)
+    public void buttonOnClick()
     {
-
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
