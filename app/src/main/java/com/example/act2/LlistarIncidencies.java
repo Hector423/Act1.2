@@ -93,7 +93,7 @@ public class LlistarIncidencies extends AppCompatActivity
 
         for(int i=0; i<databaseListEntries.size(); i++) textToShow = textToShow.concat
         (
-            databaseListEntries.get(i).id + ": " + databaseListEntries.get(i).identificador + "\n"
+            /*databaseListEntries.get(i).id*/i + ": " + databaseListEntries.get(i).identificador + "\n"
                 + databaseListEntries.get(i).nom + " " + databaseListEntries.get(i).cognom + " ("
                 + databaseListEntries.get(i).dni + ")\n" + databaseListEntries.get(i).telContacte
                 + "\n" + databaseListEntries.get(i).descripcio + "\n\n------------------------------\n"
