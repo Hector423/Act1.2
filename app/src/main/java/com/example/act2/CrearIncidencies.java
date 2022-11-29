@@ -19,7 +19,7 @@ public class CrearIncidencies extends AppCompatActivity
     private Button cancelar, enviar;
 
     String nomV = "", cognomV= "", dniV= "", emailV= "",  identificadorV= "",  descripcioV= "";
-    int telContacteV = 0;
+    int telContacteV = 1;
 
     @SuppressWarnings("DanglingJavadoc")
     @Override
