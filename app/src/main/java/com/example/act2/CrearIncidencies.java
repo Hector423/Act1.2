@@ -60,10 +60,13 @@ public class CrearIncidencies extends AppCompatActivity
     @SuppressWarnings("DanglingJavadoc")
     private void insertarDades()
     {
+        String telContacteString = "";
+        telContacteString = telContacte.getText().toString();
+        if(telContacteString.equals("")) telContacteString="0";
+
         nomV = nom.getText().toString();
         cognomV = cognom.getText().toString();
         dniV = dni.getText().toString();
-        String telContacteString = telContacte.getText().toString();
         telContacteV = Integer.parseInt(telContacteString);
         emailV = email.getText().toString();
         identificadorV = identificador.getText().toString();
